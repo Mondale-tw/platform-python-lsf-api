@@ -7,7 +7,7 @@
 
 CC = gcc
 #LSF_LIBDIR = /opt/platform/lsf/8.0/x86-64-sol10/lib
-PYTHON_INCLUDE = /usr/include/python2.4
+PYTHON_INCLUDE = /usr/include/python2.6
 LSF_INCLUDE = $(LSF_LIBDIR)/../../include/lsf/
 
 PROJECT = _lsf.so
@@ -18,14 +18,13 @@ LDFLAGS = $(LSF_LIBDIR)/liblsf.a $(LSF_LIBDIR)/libbat.a $(LSF_LIBDIR)/libfairsha
 
 all: $(PROJECT)
 
-.c.o:
-	$(CC) $(CFLAGS) -c $<
+lsf_wrap.c: swig
 
-$(PROJECT): swig $(OBJECTS)
-	ld -shared $(OBJECTS) -o $(PROJECT) $(LDFLAGS)
+$(PROJECT): lsf_wrap.c
+	gcc -shared -o $(PROJECT) lsf_wrap.c $(CFLAGS) $(LDFLAGS)
 
 swig:
 	swig -python -I$(LSF_INCLUDE) lsf.i
 
 clean:
-	rm -rf _lsf.so lsf.py lsf.pyc lsf_wrap.c lsf_wrap.o
+	rm -rf _lsf.so lsf.py lsf.pyc lsf_wrap.c

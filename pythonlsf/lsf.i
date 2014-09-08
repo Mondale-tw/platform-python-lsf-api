@@ -22,6 +22,8 @@ int fclose(FILE *f);
 
 %pointer_functions(int, intp)
 %pointer_functions(float, floatp)
+%pointer_functions(struct submit, submitp)
+%pointer_functions(struct jobDepRequest, jobDepRequestp)
 %array_functions(int, intArray)
 %array_functions(float, floatArray)
 %array_functions(char *, stringArray)
