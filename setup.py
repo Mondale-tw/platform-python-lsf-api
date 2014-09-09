@@ -22,7 +22,7 @@ setup(name='platform-python-lsf-api',
                                extra_compile_args=['-m64', 
                                     '-I' + os.environ['LSF_LIBDIR'] + '/../../include/lsf/',
                                     os.environ['LSF_LIBDIR'] + '/liblsf.a',
-                                    os.environ['LSF_LIBDIR'] + '/libbat.a']
+                                    os.environ['LSF_LIBDIR'] + '/libbat.a'],
                                libraries=['c', 'nsl', 'python2.6',
                                             'fairshareadjust', 'lsbstream'])],
       py_modules=['pythonlsf.lsf'],
