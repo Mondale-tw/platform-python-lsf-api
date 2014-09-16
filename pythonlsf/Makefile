@@ -13,7 +13,7 @@ LSF_INCLUDE = $(LSF_LIBDIR)/../../include/lsf/
 PROJECT = _lsf.so
 OBJECTS = lsf_wrap.o
 
-CFLAGS  = -m64 -fPIC -I$(PYTHON_INCLUDE) -I$(LSF_INCLUDE)
+CFLAGS  = -m64 -fPIC -I$(PYTHON_INCLUDE) -I$(LSF_INCLUDE) -DSWIG_PYTHON_SILENT_MEMLEAK
 LDFLAGS = $(LSF_LIBDIR)/liblsf.a $(LSF_LIBDIR)/libbat.a $(LSF_LIBDIR)/libfairshareadjust.so $(LSF_LIBDIR)/liblsbstream.so -lc -lnsl -lpython2.6
 
 all: $(PROJECT)
